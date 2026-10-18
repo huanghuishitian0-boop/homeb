@@ -1,12 +1,228 @@
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=homebase%20-%20Claude.html">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Redirecting…</title>
-</head>
-<body>
-  <p>ページを読み込んでいます。しばらくしても移動しない場合は <a href="homebase%20-%20Claude.html">こちら</a> をクリックしてください。</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>石田晃輝 | 子ども向け英語教育</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --bg-2: #111827;
+        --card: rgba(15, 23, 42, 0.78);
+        --muted: #a5b4cf;
+        --text: #e5eefc;
+        --accent: #8bb8ff;
+        --accent-2: #d5c3ff;
+        --line: rgba(255, 255, 255, 0.12);
+        --chip: rgba(139, 184, 255, 0.14);
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        font-family: "Segoe UI", "Hiragino Kaku Gothic Pro", "Yu Gothic", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(139, 184, 255, 0.16), transparent 28%),
+          linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
+        color: var(--text);
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 18px;
+      }
+
+      .card {
+        width: min(100%, 560px);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+        overflow: hidden;
+      }
+
+      .header {
+        padding: 30px 28px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: #0f172a;
+        box-shadow: 0 10px 24px rgba(139,184,255,0.35);
+      }
+
+      .identity h1 {
+        margin: 0;
+        font-size: clamp(1.7rem, 3vw, 2.3rem);
+        letter-spacing: 0.02em;
+      }
+
+      .role {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .content {
+        padding: 22px 28px 26px;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .badge {
+        background: var(--chip);
+        color: var(--text);
+        border: 1px solid rgba(139,184,255,0.2);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+      }
+
+      .bio {
+        margin: 0 0 20px;
+        color: var(--text);
+        line-height: 1.8;
+        font-size: 0.98rem;
+      }
+
+      .links {
+        display: grid;
+        gap: 12px;
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255,255,255,0.015);
+        text-decoration: none;
+        color: var(--text);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .link:hover {
+        transform: translateY(-1px);
+        border-color: rgba(139,184,255,0.35);
+      }
+
+      .label {
+        font-weight: 600;
+      }
+
+      .value {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .cta {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: opacity 0.2s ease;
+      }
+
+      .button:hover { opacity: 0.9; }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #0f172a;
+      }
+
+      .button.secondary {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        color: var(--text);
+      }
+
+      @media (max-width: 520px) {
+        .header, .content { padding-left: 18px; padding-right: 18px; }
+        .top { align-items: flex-start; }
+        .link { flex-direction: column; align-items: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <header class="header">
+        <div class="top">
+          <div class="avatar">石</div>
+          <div class="identity">
+            <h1>石田晃輝</h1>
+            <div class="role">子ども向け英語教育</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="badges">
+          <span class="badge">英語</span>
+          <span class="badge">小学生向け</span>
+          <span class="badge">オンライン</span>
+          <span class="badge">個別指導</span>
+        </div>
+
+        <p class="bio">
+          子どものうちから、正しい英語の土台を身につけるお手伝いをしています。<br>
+          音や文法を楽しみながら吸収できるよう、歌やゲームを取り入れた授業を大切にしています。
+        </p>
+
+        <div class="links">
+          <a class="link" href="mailto:example@example.com">
+            <span class="label">メール</span>
+            <span class="value">example@example.com</span>
+          </a>
+          <a class="link" href="https://x.com" target="_blank" rel="noopener noreferrer">
+            <span class="label">X</span>
+            <span class="value">@your_x_account</span>
+          </a>
+          <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <span class="label">Instagram</span>
+            <span class="value">@your_instagram</span>
+          </a>
+        </div>
+
+        <div class="cta">
+          <a class="button primary" href="mailto:example@example.com">お問い合わせ</a>
+          <a class="button secondary" href="https://example.com" target="_blank" rel="noopener noreferrer">詳細を見る</a>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
