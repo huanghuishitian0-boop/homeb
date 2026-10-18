@@ -1,228 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>石田晃輝 | 子ども向け英語教育</title>
-    <style>
-      :root {
-        --bg: #0f172a;
-        --bg-2: #111827;
-        --card: rgba(15, 23, 42, 0.78);
-        --muted: #a5b4cf;
-        --text: #e5eefc;
-        --accent: #8bb8ff;
-        --accent-2: #d5c3ff;
-        --line: rgba(255, 255, 255, 0.12);
-        --chip: rgba(139, 184, 255, 0.14);
-      }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ホームベース学び舎｜放課後がいちばん伸びる時間</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Yomogi&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#9a4444;--wine:#7b2142;--cream:#fdfde9;--beige:#e9dcb8;--green:#1faa4d;--yellow:#f4f06a;--orange:#ee4b23;--ink:#1c1a1a}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--cream);color:var(--ink);font:500 16px/1.85 "Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;overflow-x:hidden}
+a{color:inherit}
+.wrap{width:min(1040px,100% - 40px);margin-inline:auto}
+#bar{position:fixed;inset:0 auto auto 0;height:4px;width:0;background:var(--yellow);z-index:30}
+header{position:fixed;inset:0 0 auto;z-index:20;height:56px;background:var(--maroon);color:#fff;border-bottom:2px solid var(--ink);transition:box-shadow .3s}
+header.s{box-shadow:0 6px 20px rgba(0,0,0,.25)}
+header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:900;font-size:1.15rem;text-decoration:none;letter-spacing:.04em}
+nav ul{display:flex;gap:22px;padding:0;list-style:none;font-size:.9rem}
+nav a{text-decoration:none;position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:hover::after{transform:scaleX(1)}
+.mini{background:var(--yellow);color:var(--ink);font-weight:900;font-size:.85rem;padding:6px 16px;border-radius:99px;text-decoration:none;transition:transform .2s}
+.mini:hover{transform:scale(1.07) rotate(-2deg)}
+@media(max-width:760px){nav{display:none}}
+.band{margin-top:56px;background:var(--maroon);color:#fff;border-bottom:2px solid var(--ink)}
+.band .wrap{display:flex;align-items:center;gap:14px;padding:12px 0;font-weight:900;line-height:1.4}
+.seal{flex:none;width:64px;height:64px;border-radius:50%;background:#fff;color:var(--maroon);display:grid;place-items:center;font-size:1.05rem}
+.band small{display:block;font-size:.85rem;font-weight:700}
+.band .x{font-size:1.6rem;font-weight:500}
+.hero{position:relative;overflow:hidden;padding:44px 0 72px}
+.hero h1{font-size:clamp(2.4rem,8.4vw,4.8rem);line-height:1.2;font-weight:900;letter-spacing:.02em}
+.m{color:var(--maroon)}
+.hero p.lead{margin-top:20px;font-size:clamp(1rem,2.6vw,1.2rem);font-weight:700;max-width:30em}
+.ball{position:absolute;right:-70px;top:30px;width:min(52vw,380px);opacity:.95;will-change:transform}
+.ball svg{width:100%;display:block}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:32px;position:relative}
+.free{position:relative;background:var(--yellow);border:3px solid var(--ink);padding:10px 34px 10px 20px;font-weight:900;font-size:1.5rem;line-height:1.2;clip-path:polygon(0 0,86% 0,100% 50%,86% 100%,0 100%);color:var(--orange);animation:pulse 2.4s ease-in-out infinite}
+.free small{display:block;color:var(--ink);font-size:.95rem}
+.tag{position:absolute;left:-6px;top:-22px;background:var(--orange);color:#fff;font-size:.75rem;font-weight:900;padding:2px 12px;border-radius:6px;transform:rotate(-5deg);z-index:2;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-weight:900;padding:16px 30px;border-radius:14px;border:3px solid var(--ink);text-decoration:none;box-shadow:0 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
+.btn i{font-style:normal;transition:transform .2s}.btn:hover i{transform:translateX(6px)}
+@keyframes pulse{50%{transform:scale(1.04)}}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.ld{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d,0)*.15s + .1s)}
+.spin{animation:spin 40s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:72px 0}
+.ttl{background:var(--beige);border-radius:14px;text-align:center;font-weight:900;font-size:clamp(1.4rem,4.5vw,1.9rem);padding:10px 20px;margin-bottom:36px;position:relative;overflow:hidden}
+.ttl::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-100%)}
+.in .ttl::after,.ttl.in::after{animation:shine 1.4s .3s ease}
+@keyframes shine{to{transform:translateX(100%)}}
+.note{position:relative;background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.18);padding:30px 26px;margin:0 auto 44px;max-width:760px;transform:rotate(-1deg);font-family:Yomogi,"Zen Kaku Gothic New",sans-serif}
+.note h3{font-size:clamp(1.3rem,4.6vw,2rem);line-height:1.5;font-weight:400}
+.note p{margin-top:10px;font-size:1.02rem}
+.clip{position:absolute;left:18px;top:-24px;width:30px}
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:#fff;border-radius:22px;box-shadow:0 6px 18px rgba(0,0,0,.14);padding:22px;display:flex;gap:16px;align-items:flex-start;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 28px rgba(123,33,66,.25)}
+.ico{flex:none;width:68px;height:68px;border-radius:50%;background:var(--wine);display:grid;place-items:center;transition:transform .5s}
+.card:hover .ico{transform:rotate(360deg)}
+.ico svg{width:36px;height:36px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.1rem;line-height:1.5}
+.card h3 b{display:block;color:var(--maroon);font-size:.95rem}
+.card p{font-size:.88rem;line-height:1.7;margin-top:4px;color:#444}
+.course{flex-direction:column;position:relative;border:3px solid transparent}
+.course:hover{border-color:var(--maroon)}
+.course .no{font-weight:900;font-size:2.6rem;color:var(--beige);line-height:1}
+.course .pr{margin-top:auto;font-weight:900;color:var(--maroon)}
+.course .pr small{color:var(--ink);font-weight:500}
+.tbl{margin:40px auto 0;max-width:620px;border:3px solid var(--ink);background:#fff;width:100%;border-collapse:collapse;text-align:center;font-weight:900}
+.tbl th,.tbl td{border:2px solid var(--ink);padding:8px 10px}
+.tbl th{background:var(--beige)}.tbl tbody th{font-size:1.2rem}.tbl td{font-size:1.25rem;transition:background .2s}
+.tbl tr:hover td{background:var(--yellow)}
+.fine{text-align:center;font-size:.82rem;color:#555;margin-top:12px}
+dl{display:grid;grid-template-columns:7em 1fr;max-width:720px;margin:0 auto;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+dt,dd{padding:14px 18px;border-bottom:1px solid #eadfc2}
+dt{background:var(--beige);font-weight:900}
+.qa{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:40px}
+.qa div{background:#fff;border:3px solid var(--maroon);border-radius:18px;padding:14px 18px;font-weight:700;font-size:.92rem;line-height:1.6;transition:transform .25s,background .25s}
+.qa div:hover{transform:rotate(-1.5deg) scale(1.03);background:var(--yellow)}
+.qa em{font-style:normal;color:var(--maroon);font-weight:900}
+#contact{background:var(--maroon);color:#fff;border-top:3px solid var(--ink)}
+.cwrap{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:center}
+.arrow{display:inline-block;border:3px solid #fff;padding:10px 40px 10px 22px;font-weight:900;font-size:1.6rem;clip-path:polygon(0 0,90% 0,100% 50%,90% 100%,0 100%)}
+#contact h2+p{margin-top:16px;font-size:1.3rem;font-weight:900;line-height:1.6}
+form{background:var(--cream);color:var(--ink);border-radius:20px;padding:24px;display:grid;gap:14px;border:3px solid var(--ink)}
+label{font-weight:900;font-size:.9rem;display:grid;gap:4px}
+input,textarea{font:inherit;padding:10px 12px;border:2px solid #c9bc97;border-radius:10px;background:#fff;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 4px rgba(31,170,77,.22)}
+button.btn{cursor:pointer;font:inherit;font-weight:900;justify-content:center}
+#ok{display:none;text-align:center;font-weight:900;color:var(--green)}
+footer{background:var(--ink);color:#bbb;text-align:center;font-size:.8rem;padding:22px 20px;line-height:1.7}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*.12s)}
+.rv.in{opacity:1;transform:none}
+.note.rv{transform:translateY(34px) rotate(-1deg)}.note.rv.in{transform:rotate(-1deg)}
+@media(max-width:560px){.ball{right:-110px;top:20px;opacity:.35}.seal{width:54px;height:54px;font-size:.9rem}dl{grid-template-columns:1fr}dt{border:0;padding-bottom:4px}dd{padding-top:6px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.ld{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+</svg>
 
-      * { box-sizing: border-box; }
+<header id="hd"><div class="wrap">
+  <a class="logo" href="#top">ホームベース学び舎</a>
+  <nav><ul><li><a href="#concept">コンセプト</a></li><li><a href="#course">コース</a></li><li><a href="#shop">店舗情報</a></li><li><a href="#contact">お問い合わせ</a></li></ul></nav>
+  <a class="mini" href="#contact">無料体験</a>
+</div></header>
 
-      html, body {
-        margin: 0;
-        min-height: 100%;
-        font-family: "Segoe UI", "Hiragino Kaku Gothic Pro", "Yu Gothic", sans-serif;
-        background:
-          radial-gradient(circle at top, rgba(139, 184, 255, 0.16), transparent 28%),
-          linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
-        color: var(--text);
-      }
+<div class="band" id="top"><div class="wrap">
+  <div class="seal">開室中</div>
+  <div>個別指導<span class="x"> × </span>自習室<small>英語｜小学生から高校生まで　放課後〜夜22時</small></div>
+</div></div>
 
-      body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 32px 18px;
-      }
+<main>
+<section class="hero" style="padding-top:44px"><div class="wrap">
+  <div class="ball" id="ball"><div class="spin"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="88" fill="#fff" stroke="#9a4444" stroke-width="6"/><path d="M52 34c28 28 28 104 0 132M148 34c-28 28-28 104 0 132" fill="none" stroke="#ee4b23" stroke-width="5" stroke-dasharray="3 10" stroke-linecap="round"/></svg></div></div>
+  <h1 class="ld" style="--d:0">放課後が、<br><span class="m">いちばん伸びる</span><br>時間。</h1>
+  <p class="lead ld" style="--d:1">ランドセルのままでも、制服のままでもOK。英語の文法と発音を、「なぜ？」から一緒に解きほぐす学び舎です。</p>
+  <div class="cta ld" style="--d:2">
+    <div class="free"><span class="tag">初めての方限定！</span><small>まずは</small>無料体験<small>実施中</small></div>
+    <a class="btn" href="#contact">体験を予約する <i>→</i></a>
+  </div>
+</div></section>
 
-      .card {
-        width: min(100%, 560px);
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        backdrop-filter: blur(8px);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-        overflow: hidden;
-      }
+<section id="concept"><div class="wrap">
+  <h2 class="ttl rv">コンセプト</h2>
+  <div class="note rv">
+    <svg class="clip" viewBox="0 0 30 70" fill="none" stroke="#1f9a4a" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M8 40V14a7 7 0 0 1 14 0v40a11 11 0 0 1-22 0V20"/></svg>
+    <h3>「どうして？」を口に出せる場所が、<br>いちばん成長が早い。</h3>
+    <p>答えを教える前に、つまずいた理由をいっしょに探します。ここは「先生」ではなく「頼れる先輩」のいる、ちいさな本拠地です。</p>
+  </div>
+  <div class="cards">
+    <article class="card rv" style="--d:0"><div class="ico"><svg><use href="#i-bulb"/></svg></div><div><h3><b>【わかる理由】</b>つまずきの原因を論理で解明</h3><p>間違いの「型」を分析し、何が足りないのかを言葉にして伝えます。</p></div></article>
+    <article class="card rv" style="--d:1"><div class="ico"><svg><use href="#i-clock"/></svg></div><div><h3><b>【通える時間】</b>部活終わりの夜も歓迎</h3><p>急な予定変更や、テスト前の増コマにも柔軟に対応します。</p></div></article>
+    <article class="card rv" style="--d:2"><div class="ico"><svg><use href="#i-home"/></svg></div><div><h3><b>【ほっとする空気】</b>自分のペースで進める</h3><p>人見知りでも大丈夫。ホームに帰ってくる感覚で通えます。</p></div></article>
+  </div>
+</div></section>
 
-      .header {
-        padding: 30px 28px 18px;
-        border-bottom: 1px solid var(--line);
-      }
+<section id="course" style="background:#f6f2d4"><div class="wrap">
+  <h2 class="ttl rv">コース紹介</h2>
+  <div class="cards">
+    <article class="card course rv" style="--d:0"><div class="no">01</div><h3><b>英語はじめてコース</b>小学生以下のお子さま向け</h3><p>歌やゲームで英語の音に親しみ、正しい発音と文法の土台を、楽しみながら身に付けます。</p><div class="pr">¥1,800〜 <small>/ 50分</small></div></article>
+    <article class="card course rv" style="--d:1"><div class="no">02</div><h3><b>英語しっかりコース</b>中学〜高校の文法・発音</h3><p>教科書に沿って、正しい文法と発音を土台から。定期テストや受験にも対応します。</p><div class="pr">¥2,400〜 <small>/ 50分</small></div></article>
+    <article class="card course rv" style="--d:2"><div class="no">03</div><h3><b>自習ホームコース</b>質問し放題の自習室</h3><p>夜22時まで利用OK。わからない所は、その場で先輩に質問できます。</p><div class="pr">¥6,000 <small>/ 月</small></div></article>
+  </div>
+  <table class="tbl rv"><thead><tr><th>学年</th><th>授業料（50分／1コマ）</th></tr></thead>
+    <tbody><tr><th>小学生以下</th><td>¥1,800</td></tr><tr><th>中1・2</th><td>¥2,400</td></tr><tr><th>中3</th><td>¥2,900</td></tr><tr><th>高1・2</th><td>¥3,400</td></tr><tr><th>高3</th><td>¥4,400</td></tr></tbody></table>
+  <p class="fine">入会金・教材費は0円。お手持ちの教材をそのまま使えます。</p>
+</div></section>
 
-      .top {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
+<section id="shop"><div class="wrap">
+  <h2 class="ttl rv">店舗情報</h2>
+  <dl class="rv">
+    <dt>店名</dt><dd>ホームベース学び舎</dd>
+    <dt>所在地</dt><dd>〒000-0000 ○○県○○市ホームベース町1-2-3 2F</dd>
+    <dt>営業時間</dt><dd>平日 15:00〜22:00／土曜 10:00〜20:00</dd>
+    <dt>定休日</dt><dd>日曜・祝日</dd>
+    <dt>電話</dt><dd>000-0000-0000</dd>
+    <dt>アクセス</dt><dd>最寄り駅から徒歩5分。自転車置き場あり。</dd>
+  </dl>
+  <div class="qa">
+    <div class="rv" style="--d:0">Q. 持ち物は？<br>A. <em>筆記用具と学校の教材</em>だけです。</div>
+    <div class="rv" style="--d:1">Q. 小さな子でも通える？<br>A. <em>小学生以下も大歓迎</em>。保護者の見学もOKです。</div>
+    <div class="rv" style="--d:2">Q. 体験だけでもいい？<br>A. はい、<em>無料</em>で受けられます。</div>
+  </div>
+</div></section>
 
-      .avatar {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        display: grid;
-        place-items: center;
-        font-weight: 700;
-        font-size: 1.4rem;
-        color: #0f172a;
-        box-shadow: 0 10px 24px rgba(139,184,255,0.35);
-      }
+<section id="contact"><div class="wrap cwrap">
+  <div class="rv">
+    <h2 class="arrow">お問い合わせ</h2>
+    <p>24時間受付中！<br>まずは気軽に、質問してください。</p>
+  </div>
+  <form id="f" class="rv" style="--d:1" novalidate>
+    <label>お名前<input name="n" required autocomplete="name"></label>
+    <label>メールアドレス<input name="m" type="email" required autocomplete="email"></label>
+    <label>ご相談内容<textarea name="t" rows="3" required></textarea></label>
+    <button class="btn" type="submit">無料体験を申し込む <i>→</i></button>
+    <p id="ok" role="status"></p>
+  </form>
+</div></section>
+</main>
 
-      .identity h1 {
-        margin: 0;
-        font-size: clamp(1.7rem, 3vw, 2.3rem);
-        letter-spacing: 0.02em;
-      }
+<footer>※ このサイトは架空の店舗を想定したデザイン制作物です。掲載の住所・電話番号・料金はすべて仮のものです。<br>© ホームベース学び舎</footer>
 
-      .role {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 1rem;
-      }
-
-      .content {
-        padding: 22px 28px 26px;
-      }
-
-      .badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-
-      .badge {
-        background: var(--chip);
-        color: var(--text);
-        border: 1px solid rgba(139,184,255,0.2);
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-size: 0.82rem;
-      }
-
-      .bio {
-        margin: 0 0 20px;
-        color: var(--text);
-        line-height: 1.8;
-        font-size: 0.98rem;
-      }
-
-      .links {
-        display: grid;
-        gap: 12px;
-      }
-
-      .link {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 12px 14px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: rgba(255,255,255,0.015);
-        text-decoration: none;
-        color: var(--text);
-        transition: transform 0.2s ease, border-color 0.2s ease;
-      }
-
-      .link:hover {
-        transform: translateY(-1px);
-        border-color: rgba(139,184,255,0.35);
-      }
-
-      .label {
-        font-weight: 600;
-      }
-
-      .value {
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .cta {
-        margin-top: 22px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .button {
-        display: inline-block;
-        padding: 12px 18px;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 700;
-        transition: opacity 0.2s ease;
-      }
-
-      .button:hover { opacity: 0.9; }
-
-      .button.primary {
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        color: #0f172a;
-      }
-
-      .button.secondary {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--line);
-        color: var(--text);
-      }
-
-      @media (max-width: 520px) {
-        .header, .content { padding-left: 18px; padding-right: 18px; }
-        .top { align-items: flex-start; }
-        .link { flex-direction: column; align-items: flex-start; }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="card">
-      <header class="header">
-        <div class="top">
-          <div class="avatar">石</div>
-          <div class="identity">
-            <h1>石田晃輝</h1>
-            <div class="role">子ども向け英語教育</div>
-          </div>
-        </div>
-      </header>
-
-      <section class="content">
-        <div class="badges">
-          <span class="badge">英語</span>
-          <span class="badge">小学生向け</span>
-          <span class="badge">オンライン</span>
-          <span class="badge">個別指導</span>
-        </div>
-
-        <p class="bio">
-          子どものうちから、正しい英語の土台を身につけるお手伝いをしています。<br>
-          音や文法を楽しみながら吸収できるよう、歌やゲームを取り入れた授業を大切にしています。
-        </p>
-
-        <div class="links">
-          <a class="link" href="mailto:example@example.com">
-            <span class="label">メール</span>
-            <span class="value">example@example.com</span>
-          </a>
-          <a class="link" href="https://x.com" target="_blank" rel="noopener noreferrer">
-            <span class="label">X</span>
-            <span class="value">@your_x_account</span>
-          </a>
-          <a class="link" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <span class="label">Instagram</span>
-            <span class="value">@your_instagram</span>
-          </a>
-        </div>
-
-        <div class="cta">
-          <a class="button primary" href="mailto:example@example.com">お問い合わせ</a>
-          <a class="button secondary" href="https://example.com" target="_blank" rel="noopener noreferrer">詳細を見る</a>
-        </div>
-      </section>
-    </main>
-  </body>
+<script>
+  const hd = document.getElementById("hd"), bar = document.getElementById("bar"), ball = document.getElementById("ball");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function onScroll() {
+    const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+    hd.classList.toggle("s", y > 8);
+    if (!reduce) ball.style.transform = "translateY(" + y * 0.25 + "px) rotate(" + y * 0.15 + "deg)";
+  }
+  addEventListener("scroll", () => requestAnimationFrame(onScroll), { passive: true });
+  onScroll();
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+  const f = document.getElementById("f"), ok = document.getElementById("ok");
+  f.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const bad = [...f.elements].find((x) => x.required && !x.value.trim());
+    ok.style.display = "block";
+    if (bad) { ok.style.color = "#c0392b"; ok.textContent = "未入力の項目があります。"; bad.focus(); return; }
+    ok.style.color = "#1faa4d";
+    ok.textContent = "ありがとうございます！（デモのため送信はされません）";
+    f.reset();
+  });
+</script>
+</body>
 </html>
